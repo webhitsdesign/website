@@ -1,906 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Webhits Designs — Web Designer</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Webhits Designs | Web design consulting</title>
+<meta name="description" content="Webhits Designs helps small businesses plan, redesign and launch websites that bring in customers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
-  :root{
-    --bg:#FAFAF9;
-    --surface:#FFFFFF;
-    --ink:#131316;
-    --ink-muted:#6B6B72;
-    --line:#E3E3E6;
-    --accent:#3730E0;
-    --accent-tint:#ECEBFF;
-    --signal:#16A34A;
-    --radius:2px;
-    --maxw:1180px;
-    --side-pad:clamp(24px, 5vw, 72px);
-  }
+:root{
+  --paper:#F5F7FB;--panel:#FFFFFF;--ink:#13203A;--muted:#55627C;--line:#D6DCE8;
+  --blue:#2F4BFF;--blue-ink:#FFFFFF;--sun:#FFC83D;--grid:rgba(47,75,255,.07);
+  --head:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
+  --body:'Public Sans','Segoe UI',system-ui,sans-serif;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#0F1626;--panel:#172036;--ink:#EEF2FB;--muted:#9AA7C4;--line:#2A3552;--blue:#7C91FF;--blue-ink:#0F1626;--grid:rgba(124,145,255,.09);}}
+:root[data-theme="dark"]{--paper:#0F1626;--panel:#172036;--ink:#EEF2FB;--muted:#9AA7C4;--line:#2A3552;--blue:#7C91FF;--blue-ink:#0F1626;--grid:rgba(124,145,255,.09);}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.65 var(--body);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:32px 32px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0;letter-spacing:-.02em}
+h1{font-size:clamp(2.5rem,7vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.9rem,4vw,2.7rem);font-weight:700}
+h3{font-size:1.3rem;font-weight:700}
+p{margin:0;max-width:62ch}
+header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--paper) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top,0px)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo{font:800 1.3rem var(--head);text-decoration:none;letter-spacing:-.03em}
+.logo i{display:inline-block;width:.6em;height:.6em;background:var(--sun);border:2px solid var(--ink);margin-right:.35em;vertical-align:baseline}
+nav{display:flex;gap:22px;align-items:center;font-weight:500}
+nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--ink)}
+.btn{display:inline-block;background:var(--blue);color:var(--blue-ink);font:600 1rem var(--body);padding:13px 22px;border:0;border-radius:6px;text-decoration:none;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.ghost{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+@media(max-width:700px){nav a:not(.btn){display:none}}
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
-  }
+/* hero */
+.hero{padding:72px 0 88px;display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.hero p.lead{margin:22px 0 30px;font-size:1.2rem;color:var(--muted)}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:48px}}
+.artboard{position:relative;background:var(--panel);border:1.5px solid var(--blue);aspect-ratio:4/4.4;padding:22px;display:flex;flex-direction:column;gap:12px}
+.artboard::before{content:"Homepage / 1440";position:absolute;top:-26px;left:0;font:500 .8rem var(--body);color:var(--blue)}
+.h{position:absolute;width:10px;height:10px;background:var(--panel);border:1.5px solid var(--blue)}
+.h.a{top:-6px;left:-6px}.h.b{top:-6px;right:-6px}.h.c{bottom:-6px;left:-6px}.h.d{bottom:-6px;right:-6px}
+.blk{border:1.5px dashed var(--line);border-radius:4px;position:relative;overflow:hidden}
+.blk::after{content:"";position:absolute;inset:0;background:var(--fill,var(--blue));transform-origin:left;transform:scaleX(0);animation:fill .7s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:var(--d,0s)}
+@keyframes fill{to{transform:scaleX(1)}}
+.b1{height:22px;width:45%;--d:.2s}.b2{flex:1;--d:.55s;--fill:var(--ink)}
+.b3{height:18px;width:70%;--d:.9s;--fill:var(--muted)}.b4{height:18px;width:52%;--d:1.05s;--fill:var(--muted)}
+.b5{height:40px;width:36%;--d:1.3s;--fill:var(--sun);border-color:var(--sun)}
+.cursor{position:absolute;right:14%;bottom:14%;font:600 .78rem var(--body);background:var(--sun);color:#13203A;padding:3px 9px;border-radius:0 8px 8px 8px;opacity:0;animation:pop .3s 1.7s forwards}
+@keyframes pop{to{opacity:1}}
+@media(prefers-reduced-motion:reduce){.blk::after{animation:none;transform:none}.cursor{animation:none;opacity:1}html{scroll-behavior:auto}}
 
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
+section{padding:80px 0;border-top:1px solid var(--line)}
+section>.wrap>h2{margin-bottom:14px}
+.intro{color:var(--muted);margin-bottom:44px}
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+@media(max-width:760px){.services{grid-template-columns:1fr}}
+.svc{background:var(--panel);border:1px solid var(--line);padding:28px;border-left:5px solid var(--blue)}
+.svc:nth-child(2){border-left-color:var(--sun)}.svc:nth-child(3){border-left-color:var(--ink)}
+.svc h3{margin-bottom:8px}.svc p{color:var(--muted)}
+.svc small{display:block;margin-top:14px;font-weight:600;color:var(--ink)}
 
-  h1,h2,h3{
-    font-family:'Space Grotesk', sans-serif;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.steps li{counter-increment:s;padding:0 20px 0 0;position:relative;border-top:3px solid var(--ink);padding-top:18px}
+.steps li::before{content:counter(s);font:800 1.6rem var(--head);color:var(--blue);display:block;margin-bottom:6px}
+.steps p{color:var(--muted);font-size:.98rem}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr;gap:32px 20px}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
 
-  a{color:inherit;}
-  button{font-family:inherit;}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media(max-width:760px){.about{grid-template-columns:1fr}}
+.about ul{margin:0;padding:0;list-style:none;display:grid;gap:14px}
+.about li{padding-left:28px;position:relative}
+.about li::before{content:"";position:absolute;left:0;top:.5em;width:12px;height:12px;background:var(--sun);border:2px solid var(--ink)}
 
-  .mono{
-    font-family:'JetBrains Mono', monospace;
-    letter-spacing:0.02em;
-  }
-
-  :focus-visible{
-    outline:2px solid var(--accent);
-    outline-offset:3px;
-  }
-
-  /* ---------- layout shell ---------- */
-  .wrap{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding-left:var(--side-pad);
-    padding-right:var(--side-pad);
-  }
-
-  /* ruler — desktop-only canvas motif */
-  .ruler-top{
-    position:fixed; top:0; left:0; right:0; height:22px;
-    background:var(--bg);
-    border-bottom:1px solid var(--line);
-    z-index:60;
-    display:flex;
-    align-items:flex-end;
-    overflow:hidden;
-    pointer-events:none;
-  }
-  .ruler-top::before{
-    content:"";
-    position:absolute; left:0; right:0; bottom:0; height:22px;
-    background-image:repeating-linear-gradient(
-      to right,
-      var(--line) 0, var(--line) 1px,
-      transparent 1px, transparent 80px
-    );
-  }
-  .ruler-left{
-    position:fixed; top:22px; bottom:0; left:0; width:22px;
-    background:var(--bg);
-    border-right:1px solid var(--line);
-    z-index:59;
-    pointer-events:none;
-  }
-  .ruler-left::before{
-    content:"";
-    position:absolute; top:0; bottom:0; left:0; right:0;
-    background-image:repeating-linear-gradient(
-      to bottom,
-      var(--line) 0, var(--line) 1px,
-      transparent 1px, transparent 80px
-    );
-  }
-  @media (max-width: 860px){
-    .ruler-top, .ruler-left{display:none;}
-  }
-
-  .coord-readout{
-    position:fixed;
-    padding:3px 8px;
-    background:var(--ink);
-    color:var(--bg);
-    font-size:11px;
-    border-radius:2px;
-    pointer-events:none;
-    z-index:70;
-    opacity:0;
-    transition:opacity .15s ease;
-    white-space:nowrap;
-  }
-  .coord-readout.visible{opacity:1;}
-  @media (max-width: 860px), (hover:none){
-    .coord-readout{display:none;}
-  }
-
-  /* nav */
-  .nav{
-    position:sticky; top:22px; z-index:50;
-    background:rgba(250,250,249,0.86);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  @media (max-width:860px){ .nav{top:0;} }
-  .nav-inner{
-    display:flex; align-items:center; justify-content:space-between;
-    padding-top:16px; padding-bottom:16px;
-  }
-  .nav-mark{
-    font-family:'Space Grotesk', sans-serif;
-    font-weight:700; font-size:18px;
-    text-decoration:none;
-    display:flex; align-items:center; gap:8px;
-  }
-  .nav-mark .dot{
-    width:8px; height:8px; border-radius:50%;
-    background:var(--signal);
-    display:inline-block;
-  }
-  .nav-links{
-    display:flex; gap:28px; list-style:none; margin:0; padding:0;
-  }
-  .nav-links a{
-    text-decoration:none;
-    font-size:14px;
-    color:var(--ink-muted);
-    transition:color .15s ease;
-  }
-  .nav-links a:hover{color:var(--ink);}
-  @media (max-width:640px){ .nav-links{display:none;} }
-
-  /* section frame label — signature motif */
-  .section{position:relative; padding:120px 0 96px;}
-  .section + .section{border-top:1px solid var(--line);}
-  .frame-tag{
-    position:absolute;
-    top:28px; left:var(--side-pad);
-    display:flex; align-items:center; gap:10px;
-    font-size:11px;
-    color:var(--ink-muted);
-    text-transform:uppercase;
-  }
-  .frame-tag::before{
-    content:"";
-    width:9px; height:9px;
-    border-top:1.5px solid var(--accent);
-    border-left:1.5px solid var(--accent);
-  }
-  .frame-dim{
-    position:absolute;
-    top:28px; right:var(--side-pad);
-    font-size:11px;
-    color:var(--ink-muted);
-    text-transform:uppercase;
-  }
-  @media (max-width:640px){ .frame-dim{display:none;} }
-
-  .eyebrow{
-    font-size:13px;
-    color:var(--accent);
-    margin-bottom:14px;
-    display:block;
-  }
-
-  /* ---------- hero ---------- */
-  .hero{
-    padding-top:180px;
-    padding-bottom:110px;
-    min-height:88vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-  }
-  .hero-avail{
-    display:inline-flex; align-items:center; gap:8px;
-    font-size:13px; color:var(--ink-muted);
-    margin-bottom:28px;
-    padding:6px 12px 6px 10px;
-    border:1px solid var(--line);
-    border-radius:999px;
-    width:fit-content;
-  }
-  .hero-avail .dot{width:7px; height:7px; border-radius:50%; background:var(--signal);}
-  .hero h1{
-    font-size:clamp(42px, 7vw, 84px);
-    font-weight:700;
-    line-height:0.98;
-    max-width:16ch;
-  }
-  .hero h1 em{
-    font-style:normal;
-    color:var(--accent);
-  }
-  .hero-headline{
-    margin-top:28px;
-    font-size:clamp(17px, 2vw, 20px);
-    color:var(--ink-muted);
-    max-width:52ch;
-    font-weight:400;
-  }
-  .hero-cta{
-    margin-top:44px;
-    display:flex; gap:16px; flex-wrap:wrap;
-    align-items:center;
-  }
-  .btn{
-    display:inline-flex; align-items:center; gap:10px;
-    padding:15px 26px;
-    font-size:15px; font-weight:500;
-    text-decoration:none;
-    border-radius:2px;
-    border:1px solid transparent;
-    cursor:pointer;
-    transition:transform .15s ease, background .15s ease, border-color .15s ease;
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{
-    background:var(--ink);
-    color:var(--bg);
-  }
-  .btn-primary:hover{background:var(--accent);}
-  .btn-ghost{
-    background:transparent;
-    color:var(--ink);
-    border-color:var(--line);
-  }
-  .btn-ghost:hover{border-color:var(--ink);}
-  .btn-arrow{transition:transform .15s ease;}
-  .btn:hover .btn-arrow{transform:translateX(3px);}
-
-  /* ---------- about ---------- */
-  .about-grid{
-    display:grid;
-    grid-template-columns:0.85fr 1.15fr;
-    gap:64px;
-    align-items:center;
-    margin-top:56px;
-  }
-  @media (max-width:800px){
-    .about-grid{grid-template-columns:1fr; gap:40px;}
-  }
-  .photo-frame{
-    position:relative;
-    aspect-ratio:4/5;
-    border:1px solid var(--line);
-    background:
-      radial-gradient(circle at 30% 20%, var(--accent-tint), transparent 60%),
-      linear-gradient(135deg, #1B1B22 0%, #2C2A55 55%, var(--accent) 130%);
-    display:flex; align-items:center; justify-content:center;
-    overflow:hidden;
-  }
-  .photo-frame::after{
-    content:"";
-    position:absolute; inset:0;
-    background-image:
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 34px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.05) 0 1px, transparent 1px 34px);
-  }
-  .photo-mono{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:96px; font-weight:700;
-    color:rgba(255,255,255,0.94);
-    position:relative; z-index:1;
-  }
-  .photo-caption{
-    position:absolute; bottom:16px; left:16px;
-    font-size:11px; color:rgba(255,255,255,0.75);
-    z-index:1;
-  }
-  .about-copy h2{
-    font-size:clamp(28px, 3.4vw, 38px);
-    margin-bottom:22px;
-  }
-  .about-copy p{
-    color:var(--ink-muted);
-    font-size:16.5px;
-    max-width:56ch;
-  }
-  .about-copy p + p{margin-top:16px;}
-  .about-stats{
-    display:flex; gap:36px;
-    margin-top:36px;
-    flex-wrap:wrap;
-  }
-  .stat-num{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:28px; font-weight:700;
-  }
-  .stat-label{
-    font-size:12.5px; color:var(--ink-muted);
-    margin-top:2px;
-  }
-
-  /* ---------- projects ---------- */
-  .section-head{
-    margin-top:40px;
-    display:flex; justify-content:space-between; align-items:flex-end;
-    gap:24px; flex-wrap:wrap;
-  }
-  .section-head h2{
-    font-size:clamp(30px, 4vw, 44px);
-  }
-  .section-head p{
-    color:var(--ink-muted);
-    max-width:42ch;
-    font-size:15px;
-  }
-  .project-grid{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:1px;
-    background:var(--line);
-    border:1px solid var(--line);
-    margin-top:52px;
-  }
-  @media (max-width:760px){
-    .project-grid{grid-template-columns:1fr;}
-  }
-  .project-card{
-    background:var(--surface);
-    padding:0;
-    text-decoration:none;
-    color:var(--ink);
-    display:flex; flex-direction:column;
-    position:relative;
-  }
-  .project-cover{
-    aspect-ratio:16/10;
-    position:relative;
-    overflow:hidden;
-  }
-  .project-cover .cover-fill{
-    position:absolute; inset:0;
-    transition:transform .5s cubic-bezier(.2,.8,.2,1);
-  }
-  .project-card:hover .cover-fill{transform:scale(1.035);}
-  .cover-idx{
-    position:absolute; top:14px; left:14px;
-    font-size:11px; color:rgba(255,255,255,0.85);
-    z-index:2;
-  }
-  .cover-grid-lines{
-    position:absolute; inset:0;
-    background-image:
-      repeating-linear-gradient(0deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 40px),
-      repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0 1px, transparent 1px 40px);
-  }
-  .project-body{
-    padding:26px 28px 30px;
-    flex:1;
-    display:flex; flex-direction:column;
-  }
-  .project-body h3{
-    font-size:19px;
-    display:flex; align-items:center; justify-content:space-between;
-    gap:10px;
-  }
-  .project-arrow{
-    font-size:16px;
-    color:var(--ink-muted);
-    transition:transform .15s ease, color .15s ease;
-  }
-  .project-card:hover .project-arrow{transform:translate(3px,-3px); color:var(--accent);}
-  .project-desc{
-    color:var(--ink-muted);
-    font-size:14.5px;
-    margin-top:10px;
-  }
-  .project-tags{
-    margin-top:18px;
-    display:flex; gap:8px; flex-wrap:wrap;
-  }
-  .tag{
-    font-size:11px;
-    padding:4px 9px;
-    border:1px solid var(--line);
-    color:var(--ink-muted);
-    border-radius:999px;
-  }
-
-  /* ---------- services ---------- */
-  .service-list{
-    margin-top:48px;
-    border-top:1px solid var(--line);
-  }
-  .service-row{
-    display:grid;
-    grid-template-columns:1fr 1.6fr auto;
-    gap:24px;
-    align-items:baseline;
-    padding:30px 0;
-    border-bottom:1px solid var(--line);
-  }
-  @media (max-width:720px){
-    .service-row{grid-template-columns:1fr; gap:8px;}
-  }
-  .service-name{
-    font-family:'Space Grotesk', sans-serif;
-    font-size:21px; font-weight:600;
-  }
-  .service-desc{
-    color:var(--ink-muted);
-    font-size:15px;
-  }
-  .service-price{
-    font-family:'JetBrains Mono', monospace;
-    font-size:13px;
-    color:var(--ink-muted);
-    white-space:nowrap;
-    justify-self:end;
-  }
-  @media (max-width:720px){ .service-price{justify-self:start;} }
-
-  /* ---------- testimonials ---------- */
-  .testi-grid{
-    margin-top:52px;
-    display:grid;
-    grid-template-columns:repeat(3, 1fr);
-    gap:28px;
-  }
-  @media (max-width:900px){ .testi-grid{grid-template-columns:1fr; gap:20px;} }
-  .testi-card{
-    border:1px solid var(--line);
-    padding:32px 28px;
-    background:var(--surface);
-    display:flex; flex-direction:column;
-    justify-content:space-between;
-  }
-  .testi-quote{
-    font-size:16px;
-    line-height:1.55;
-  }
-  .testi-quote::before{content:"“";}
-  .testi-quote::after{content:"”";}
-  .testi-who{
-    margin-top:24px;
-    display:flex; align-items:center; gap:12px;
-  }
-  .testi-avatar{
-    width:38px; height:38px; border-radius:50%;
-    background:linear-gradient(135deg, var(--accent), #1B1B22);
-    display:flex; align-items:center; justify-content:center;
-    color:#fff; font-size:13px; font-family:'Space Grotesk',sans-serif; font-weight:600;
-    flex-shrink:0;
-  }
-  .testi-name{font-size:14px; font-weight:500;}
-  .testi-role{font-size:12.5px; color:var(--ink-muted);}
-
-  /* ---------- contact ---------- */
-  .contact-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:64px;
-    margin-top:48px;
-  }
-  @media (max-width:820px){ .contact-grid{grid-template-columns:1fr; gap:40px;} }
-  .contact-intro h2{
-    font-size:clamp(30px, 4vw, 44px);
-  }
-  .contact-intro p{
-    color:var(--ink-muted);
-    margin-top:18px;
-    max-width:42ch;
-  }
-  .social-list{
-    margin-top:36px;
-    list-style:none; padding:0;
-    border-top:1px solid var(--line);
-  }
-  .social-list li{border-bottom:1px solid var(--line);}
-  .social-list a{
-    display:flex; align-items:center; justify-content:space-between;
-    padding:16px 2px;
-    text-decoration:none;
-    font-size:15px;
-    color:var(--ink);
-  }
-  .social-list a .arrow{color:var(--ink-muted); transition:transform .15s ease;}
-  .social-list a:hover .arrow{transform:translate(3px,-3px); color:var(--accent);}
-
-  .field{margin-bottom:22px;}
-  .field label{
-    display:block;
-    font-size:12.5px;
-    color:var(--ink-muted);
-    margin-bottom:8px;
-  }
-  .field input, .field textarea{
-    width:100%;
-    background:transparent;
-    border:none;
-    border-bottom:1px solid var(--line);
-    padding:10px 2px;
-    font-family:'Inter', sans-serif;
-    font-size:15.5px;
-    color:var(--ink);
-    resize:vertical;
-  }
-  .field input:focus, .field textarea:focus{
-    outline:none;
-    border-bottom-color:var(--accent);
-  }
-  .field textarea{min-height:110px;}
-  .form-note{
-    font-size:12.5px;
-    color:var(--ink-muted);
-    margin-top:6px;
-    min-height:16px;
-  }
-  .form-note.success{color:var(--signal);}
-
-  /* ---------- footer ---------- */
-  footer{
-    border-top:1px solid var(--line);
-    padding:32px 0 40px;
-  }
-  .footer-inner{
-    display:flex; justify-content:space-between; align-items:center;
-    gap:16px; flex-wrap:wrap;
-    font-size:12.5px;
-    color:var(--ink-muted);
-  }
-  .footer-inner a{text-decoration:none; color:var(--ink-muted);}
-  .footer-inner a:hover{color:var(--ink);}
+.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
+@media(max-width:800px){.contact{grid-template-columns:1fr}}
+form{background:var(--panel);border:1px solid var(--line);padding:28px;display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+input,select,textarea{font:400 1rem var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:6px;padding:11px 12px;width:100%}
+textarea{min-height:120px;resize:vertical}
+.note{font-size:.9rem;color:var(--muted)}
+footer{border-top:1px solid var(--line);padding:28px 0 36px;color:var(--muted);font-size:.95rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
 </head>
 <body>
-
-<div class="ruler-top" aria-hidden="true"></div>
-<div class="ruler-left" aria-hidden="true"></div>
-<div class="coord-readout mono" id="coordReadout" aria-hidden="true"></div>
-
-<nav class="nav">
-  <div class="wrap nav-inner">
-    <a href="#top" class="nav-mark"><span class="dot"></span> Webhits Designs</a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#testimonials">Testimonials</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+<header class="top"><div class="wrap bar">
+  <a class="logo" href="#top"><i></i>Webhits Designs</a>
+  <nav aria-label="Main"><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a class="btn" href="#contact">Book a call</a></nav>
+</div></header>
 
 <main id="top">
+<div class="wrap hero">
+  <div>
+    <h1>Your website, planned like a design brief.</h1>
+    <p class="lead">Webhits Designs is a web design consultancy for small businesses. We audit what you have, decide what to fix first, and build a site that brings in customers.</p>
+    <div class="cta"><a class="btn" href="#contact">Book a free 20-minute call</a><a class="btn ghost" href="#services">See services</a></div>
+  </div>
+  <div class="artboard" aria-hidden="true">
+    <span class="h a"></span><span class="h b"></span><span class="h c"></span><span class="h d"></span>
+    <div class="blk b1"></div><div class="blk b2"></div><div class="blk b3"></div><div class="blk b4"></div><div class="blk b5"></div>
+    <span class="cursor">Webhits</span>
+  </div>
+</div>
 
-  <!-- HERO -->
-  <section class="section hero wrap" id="hero">
-    <div class="hero-avail"><span class="dot"></span> Available for new projects — booking Q4 2026</div>
-    <h1>Websites that make small businesses feel <em>inevitable.</em></h1>
-    <p class="hero-headline">I'm Webhits Designs, a freelance web design studio helping founders and small teams turn a rough idea into a site that looks like it was always meant to exist.</p>
-    <div class="hero-cta">
-      <a href="#work" class="btn btn-primary">View my work <span class="btn-arrow">→</span></a>
-      <a href="#contact" class="btn btn-ghost">Start a project</a>
-    </div>
-  </section>
+<section id="services"><div class="wrap">
+  <h2>What we do</h2>
+  <p class="intro">Start with advice, or hand over the whole build. Each service works on its own.</p>
+  <div class="services">
+    <article class="svc"><h3>Website audit</h3><p>A review of your current site: design, speed, mobile layout, search visibility and how easily visitors can contact you. You get a ranked list of fixes.</p><small>Good for: sites that feel stuck</small></article>
+    <article class="svc"><h3>Redesign strategy</h3><p>A clear plan for pages, content and layout before any design starts, so the new site matches how your customers actually look for you.</p><small>Good for: a rebuild you want to get right</small></article>
+    <article class="svc"><h3>Design and build</h3><p>A custom, mobile-first website with contact forms, analytics and fast loading, set up on hosting you own.</p><small>Good for: new businesses and full redesigns</small></article>
+    <article class="svc"><h3>Ongoing care</h3><p>Monthly updates, small design changes, backups and security checks, so your site stays current without you thinking about it.</p><small>Good for: owners who want it handled</small></article>
+  </div>
+</div></section>
 
-  <!-- ABOUT -->
-  <section class="section wrap" id="about">
-    <span class="frame-tag mono">Frame — About</span>
-    <span class="frame-dim mono">1440 × 900</span>
-    <span class="eyebrow mono">ABOUT</span>
-    <div class="about-grid">
-      <div class="photo-frame">
-        <div class="photo-mono">WD</div>
-        <div class="photo-caption mono">portrait.jpg — replace with your photo</div>
-      </div>
-      <div class="about-copy">
-        <h2>Six years of turning "we don't really know what we want" into a site the client can't stop showing people.</h2>
-        <p>I design and build custom websites for small businesses, studios, and independent brands — the kind of clients who need something that looks bigger than they are, without the six-week agency runaround.</p>
-        <p>My process is simple: understand the business first, design second, and never ship anything I wouldn't want to show off myself. I work end to end — strategy, design, and front-end build — so nothing gets lost in translation.</p>
-        <div class="about-stats">
-          <div>
-            <div class="stat-num">40+</div>
-            <div class="stat-label">Sites shipped</div>
-          </div>
-          <div>
-            <div class="stat-num">6 yrs</div>
-            <div class="stat-label">Freelancing</div>
-          </div>
-          <div>
-            <div class="stat-num">98%</div>
-            <div class="stat-label">Repeat / referred clients</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="process"><div class="wrap">
+  <h2>How a project runs</h2>
+  <p class="intro">Four steps, with a clear deliverable at the end of each.</p>
+  <ol class="steps">
+    <li><h3>Discover</h3><p>We talk through your business, customers and goals, then review your current site.</p></li>
+    <li><h3>Plan</h3><p>You approve the page structure, content and scope before design begins.</p></li>
+    <li><h3>Design and build</h3><p>You see working pages early and give feedback as it takes shape.</p></li>
+    <li><h3>Launch and support</h3><p>We test on real devices, go live, and train you to make simple edits.</p></li>
+  </ol>
+</div></section>
 
-  <!-- PROJECTS -->
-  <section class="section wrap" id="work">
-    <span class="frame-tag mono">Frame — Work</span>
-    <span class="frame-dim mono">1440 × 1400</span>
-    <div class="section-head">
-      <div>
-        <span class="eyebrow mono">SELECTED WORK</span>
-        <h2>A few projects I'm proud of.</h2>
-      </div>
-      <p>Branding, e‑commerce, and marketing sites for clients across retail, hospitality, and professional services.</p>
-    </div>
+<section id="about"><div class="wrap about">
+  <div>
+    <h2>Independent, hands-on, and easy to reach</h2>
+    <p style="margin-top:16px;color:var(--muted)">Webhits Designs is an independent web design studio. You work directly with the person designing and building your site, not an account manager.</p>
+  </div>
+  <ul>
+    <li>Plain-language advice, with no jargon you have to decode.</li>
+    <li>Fixed-scope quotes, agreed before work starts.</li>
+    <li>Your domain, hosting and files stay in your name.</li>
+    <li>Sites that work on phones first, then scale up.</li>
+  </ul>
+</div></section>
 
-    <div class="project-grid">
-
-      <a class="project-card" href="#">
-        <div class="project-cover">
-          <div class="cover-fill" style="background:linear-gradient(150deg,#232342,#3730E0 70%);"></div>
-          <div class="cover-grid-lines"></div>
-          <span class="cover-idx mono">01 / 06</span>
-        </div>
-        <div class="project-body">
-          <h3>Marchetti & Sons <span class="project-arrow">↗</span></h3>
-          <p class="project-desc">A full rebrand and site rebuild for a fourth-generation Italian butcher shop, moving them from a dated template to an online ordering experience that matches the quality of the counter.</p>
-          <div class="project-tags">
-            <span class="tag">Shopify</span>
-            <span class="tag">Branding</span>
-            <span class="tag">2025</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card" href="#">
-        <div class="project-cover">
-          <div class="cover-fill" style="background:linear-gradient(150deg,#1B1B22,#6B6B72 90%);"></div>
-          <div class="cover-grid-lines"></div>
-          <span class="cover-idx mono">02 / 06</span>
-        </div>
-        <div class="project-body">
-          <h3>Northline Studio <span class="project-arrow">↗</span></h3>
-          <p class="project-desc">Portfolio and booking site for an architecture studio, built around large-format photography and a case-study system the team can update without touching code.</p>
-          <div class="project-tags">
-            <span class="tag">Webflow</span>
-            <span class="tag">CMS</span>
-            <span class="tag">2025</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card" href="#">
-        <div class="project-cover">
-          <div class="cover-fill" style="background:linear-gradient(150deg,#3730E0,#8B85FF 80%);"></div>
-          <div class="cover-grid-lines"></div>
-          <span class="cover-idx mono">03 / 06</span>
-        </div>
-        <div class="project-body">
-          <h3>Halo Skincare <span class="project-arrow">↗</span></h3>
-          <p class="project-desc">Launch site and product catalog for a DTC skincare brand, with a custom quiz flow that routes first-time visitors to the right starter set.</p>
-          <div class="project-tags">
-            <span class="tag">Next.js</span>
-            <span class="tag">E‑commerce</span>
-            <span class="tag">2024</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card" href="#">
-        <div class="project-cover">
-          <div class="cover-fill" style="background:linear-gradient(150deg,#2C2A55,#16A34A 100%);"></div>
-          <div class="cover-grid-lines"></div>
-          <span class="cover-idx mono">04 / 06</span>
-        </div>
-        <div class="project-body">
-          <h3>Fielder & Rowe Law <span class="project-arrow">↗</span></h3>
-          <p class="project-desc">A calm, credibility-first redesign for a boutique family law practice — clear intake flow, plain-language service pages, and a lighter, more human tone throughout.</p>
-          <div class="project-tags">
-            <span class="tag">WordPress</span>
-            <span class="tag">Content</span>
-            <span class="tag">2024</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card" href="#">
-        <div class="project-cover">
-          <div class="cover-fill" style="background:linear-gradient(150deg,#131316,#3730E0 60%,#8B85FF);"></div>
-          <div class="cover-grid-lines"></div>
-          <span class="cover-idx mono">05 / 06</span>
-        </div>
-        <div class="project-body">
-          <h3>Coastline Rentals <span class="project-arrow">↗</span></h3>
-          <p class="project-desc">Booking-focused site for a small vacation rental operator, replacing a clunky third-party listing page with a fast, mobile-first search and inquiry experience.</p>
-          <div class="project-tags">
-            <span class="tag">Custom build</span>
-            <span class="tag">Booking</span>
-            <span class="tag">2023</span>
-          </div>
-        </div>
-      </a>
-
-      <a class="project-card" href="#">
-        <div class="project-cover">
-          <div class="cover-fill" style="background:linear-gradient(150deg,#55555F,#131316 85%);"></div>
-          <div class="cover-grid-lines"></div>
-          <span class="cover-idx mono">06 / 06</span>
-        </div>
-        <div class="project-body">
-          <h3>Ember & Ash Coffee <span class="project-arrow">↗</span></h3>
-          <p class="project-desc">Brand site and menu system for a two-location coffee roaster, designed to be updated seasonally in-house with zero developer involvement.</p>
-          <div class="project-tags">
-            <span class="tag">Framer</span>
-            <span class="tag">Menu system</span>
-            <span class="tag">2023</span>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </section>
-
-  <!-- SERVICES -->
-  <section class="section wrap" id="services">
-    <span class="frame-tag mono">Frame — Services</span>
-    <span class="frame-dim mono">1440 × 760</span>
-    <span class="eyebrow mono">SERVICES</span>
-    <h2 style="font-size:clamp(30px,4vw,44px); margin-top:6px;">What I offer.</h2>
-
-    <div class="service-list">
-      <div class="service-row">
-        <div class="service-name">Website Design</div>
-        <div class="service-desc">Custom design for marketing sites, portfolios, and small e-commerce shops — from wireframe through final visual design.</div>
-        <div class="service-price mono">from $2,800</div>
-      </div>
-      <div class="service-row">
-        <div class="service-name">Front-End Build</div>
-        <div class="service-desc">Hand-built, responsive front-end development on Webflow, Framer, or a custom stack — fast, accessible, and easy to maintain.</div>
-        <div class="service-price mono">from $2,200</div>
-      </div>
-      <div class="service-row">
-        <div class="service-name">Brand & Identity</div>
-        <div class="service-desc">Logo, type system, and color palette for businesses that need a visual identity before — or alongside — their website.</div>
-        <div class="service-price mono">from $1,400</div>
-      </div>
-      <div class="service-row">
-        <div class="service-name">Website Refresh</div>
-        <div class="service-desc">A focused redesign of an existing site — new visual direction and layout, without rebuilding your content from scratch.</div>
-        <div class="service-price mono">from $1,800</div>
-      </div>
-      <div class="service-row">
-        <div class="service-name">Ongoing Care Plan</div>
-        <div class="service-desc">Monthly updates, small design tweaks, and technical maintenance for clients who'd rather not think about their site again.</div>
-        <div class="service-price mono">from $150 / mo</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTIMONIALS -->
-  <section class="section wrap" id="testimonials">
-    <span class="frame-tag mono">Frame — Testimonials</span>
-    <span class="frame-dim mono">1440 × 620</span>
-    <span class="eyebrow mono">TESTIMONIALS</span>
-    <h2 style="font-size:clamp(30px,4vw,44px); margin-top:6px;">What clients say.</h2>
-
-    <div class="testi-grid">
-      <div class="testi-card">
-        <p class="testi-quote">The Webhits Designs team took a business we couldn't quite describe and turned it into a website that explains itself. Bookings were up within the first month.</p>
-        <div class="testi-who">
-          <div class="testi-avatar">MR</div>
-          <div>
-            <div class="testi-name">Maria Reyes</div>
-            <div class="testi-role">Owner, Marchetti & Sons</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <p class="testi-quote">Communication was clear from day one — no jargon, no scope creep, just steady progress and a site that actually looks like us.</p>
-        <div class="testi-who">
-          <div class="testi-avatar">DK</div>
-          <div>
-            <div class="testi-name">David Kim</div>
-            <div class="testi-role">Principal, Northline Studio</div>
-          </div>
-        </div>
-      </div>
-      <div class="testi-card">
-        <p class="testi-quote">We'd worked with two other designers before and never got a finished product. Webhits Designs shipped ours in five weeks, on budget.</p>
-        <div class="testi-who">
-          <div class="testi-avatar">SP</div>
-          <div>
-            <div class="testi-name">Sana Patel</div>
-            <div class="testi-role">Founder, Halo Skincare</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="section wrap" id="contact">
-    <span class="frame-tag mono">Frame — Contact</span>
-    <span class="frame-dim mono">1440 × 720</span>
-    <div class="contact-grid">
-      <div class="contact-intro">
-        <span class="eyebrow mono">CONTACT</span>
-        <h2>Let's build something worth bookmarking.</h2>
-        <p>Tell me a little about your project and I'll reply within one business day. Or reach out directly — whichever's easier.</p>
-
-        <ul class="social-list">
-          <li><a href="mailto:webhitsdesign@gmail.com">Email <span class="arrow mono">↗</span></a></li>
-          <li><a href="https://linkedin.com/in/yourname" target="_blank" rel="noopener">LinkedIn <span class="arrow mono">↗</span></a></li>
-          <li><a href="https://twitter.com/yourname" target="_blank" rel="noopener">Twitter / X <span class="arrow mono">↗</span></a></li>
-          <li><a href="https://dribbble.com/yourname" target="_blank" rel="noopener">Dribbble <span class="arrow mono">↗</span></a></li>
-        </ul>
-      </div>
-
-      <form id="contactForm" novalidate>
-        <div class="field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required autocomplete="name">
-        </div>
-        <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
-        </div>
-        <div class="field">
-          <label for="message">Project details</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send message <span class="btn-arrow">→</span></button>
-        <p class="form-note" id="formNote"></p>
-      </form>
-    </div>
-  </section>
-
+<section id="contact"><div class="wrap contact">
+  <div>
+    <h2>Tell us about your site</h2>
+    <p style="margin-top:16px;color:var(--muted)">Send a few details and we will reply with next steps. Prefer email? Write to <a href="mailto:webhitsdesign@gmail.com">webhitsdesign@gmail.com</a>.</p>
+  </div>
+  <form id="f" novalidate>
+    <label>Your name<input name="name" required autocomplete="name"></label>
+    <label>Email<input name="email" type="email" required autocomplete="email"></label>
+    <label>What do you need?
+      <select name="need"><option>Website audit</option><option>Redesign strategy</option><option>Design and build</option><option>Ongoing care</option><option>Not sure yet</option></select>
+    </label>
+    <label>About your project<textarea name="msg" placeholder="Your business, your current site (if any), and what you want to change."></textarea></label>
+    <button class="btn" type="submit">Send request</button>
+    <p class="note" id="status" role="status">This opens your email app with the message ready to send.</p>
+  </form>
+</div></section>
 </main>
 
-<footer>
-  <div class="wrap footer-inner">
-    <span>© <span id="year"></span> Webhits Designs. All rights reserved.</span>
-    <a href="#top">Back to top ↑</a>
-  </div>
-</footer>
+<footer><div class="wrap"><span>&copy; <span id="y">2026</span> Webhits Designs</span><a href="mailto:webhitsdesign@gmail.com">webhitsdesign@gmail.com</a></div></footer>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-
-  // Contact form — replace this handler with a real backend (Formspree, Resend, etc.)
-  // Currently opens the user's email client with a pre-filled message as a working fallback.
-  const form = document.getElementById('contactForm');
-  const note = document.getElementById('formNote');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    if(!name || !email || !message){
-      note.textContent = 'Please fill in every field before sending.';
-      note.classList.remove('success');
-      return;
-    }
-    const subject = encodeURIComponent('New project inquiry from ' + name);
-    const body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
-    window.location.href = 'mailto:webhitsdesign@gmail.com?subject=' + subject + '&body=' + body;
-    note.textContent = 'Opening your email client to send this…';
-    note.classList.add('success');
-  });
-
-  // Coordinate readout — desktop-only design-canvas cursor detail
-  const readout = document.getElementById('coordReadout');
-  const supportsHover = window.matchMedia('(hover: hover)').matches;
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (supportsHover && !prefersReducedMotion && window.innerWidth > 860) {
-    const hero = document.getElementById('hero');
-    hero.addEventListener('mousemove', function(e){
-      readout.style.left = (e.clientX + 16) + 'px';
-      readout.style.top = (e.clientY + 16) + 'px';
-      readout.textContent = 'x:' + e.clientX + '  y:' + e.clientY;
-      readout.classList.add('visible');
-    });
-    hero.addEventListener('mouseleave', function(){
-      readout.classList.remove('visible');
-    });
-  }
+document.getElementById('y').textContent=new Date().getFullYear();
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var d=new FormData(this),s=document.getElementById('status');
+  if(!d.get('name').trim()||!/\S+@\S+\.\S+/.test(d.get('email'))){s.textContent='Enter your name and a valid email address to continue.';return;}
+  var body='Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nService: '+d.get('need')+'\n\n'+d.get('msg');
+  window.location.href='mailto:webhitsdesign@gmail.com?subject='+encodeURIComponent('Project inquiry from '+d.get('name'))+'&body='+encodeURIComponent(body);
+  s.textContent='Your email app should open with the request ready to send.';
+});
 </script>
-
 </body>
 </html>
