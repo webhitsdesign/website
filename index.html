@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Webhits Designs | Web design consulting</title>
-<meta name="description" content="Webhits Designs helps small businesses plan, redesign and launch websites that bring in customers.">
+<title>Small Business Website Design in Houston | Webhits Designs</title>
+<meta name="description" content="Webhits Designs creates mobile-friendly websites for small businesses in Houston and beyond. Request a free website consultation.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Public+Sans:wght@400;500;600&display=swap">
 <style>
@@ -97,15 +97,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 <body>
 <header class="top"><div class="wrap bar">
   <a class="logo" href="#top"><i></i>Webhits Designs</a>
-  <nav aria-label="Main"><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a class="btn" href="#contact">Book a call</a></nav>
+  <nav aria-label="Main"><a href="#services">Services</a><a href="#process">Process</a><a href="#about">About</a><a class="btn" href="#contact">Get a free consultation</a></nav>
 </div></header>
 
 <main id="top">
 <div class="wrap hero">
   <div>
-    <h1>Your website, planned like a design brief.</h1>
-    <p class="lead">Webhits Designs is a web design consultancy for small businesses. We audit what you have, decide what to fix first, and build a site that brings in customers.</p>
-    <div class="cta"><a class="btn" href="#contact">Book a free 20-minute call</a><a class="btn ghost" href="#services">See services</a></div>
+    <h1>Professional websites for small businesses.</h1>
+    <p class="lead">Launch a mobile-friendly website that helps customers find and contact your business. Webhits Designs provides website design, redesigns, and practical guidance for Houston-area businesses and beyond.</p>
+    <div class="cta"><a class="btn" href="#contact">Request a free website consultation</a><a class="btn ghost" href="#services">Explore our services</a></div>
   </div>
   <div class="artboard" aria-hidden="true">
     <span class="h a"></span><span class="h b"></span><span class="h c"></span><span class="h d"></span>
@@ -151,8 +151,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 
 <section id="contact"><div class="wrap contact">
   <div>
-    <h2>Tell us about your site</h2>
-    <p style="margin-top:16px;color:var(--muted)">Send a few details and we will reply with next steps. Prefer email? Write to <a href="mailto:webhitsdesign@gmail.com">webhitsdesign@gmail.com</a>.</p>
+    <h2>Ready to get started?</h2>
+    <p style="margin-top:16px;color:var(--muted)">Tell us about your business and website goals. We will follow up to discuss the right next steps. Prefer email? Contact <a href="mailto:contact@webhitsdesign.com">contact@webhitsdesign.com</a>.</p>
   </div>
   <form id="f" novalidate>
     <label>Your name<input name="name" required autocomplete="name"></label>
@@ -167,7 +167,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </div></section>
 </main>
 
-<footer><div class="wrap"><span>&copy; <span id="y">2026</span> Webhits Designs</span><a href="mailto:webhitsdesign@gmail.com">webhitsdesign@gmail.com</a></div></footer>
+<footer><div class="wrap"><span>&copy; <span id="y">2026</span> Webhits Designs</span><a href="mailto:contact@webhitsdesign.com">contact@webhitsdesign.com</a></div></footer>
 
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
@@ -176,7 +176,7 @@ document.getElementById('f').addEventListener('submit',function(e){
   var d=new FormData(this),s=document.getElementById('status');
   if(!d.get('name').trim()||!/\S+@\S+\.\S+/.test(d.get('email'))){s.textContent='Enter your name and a valid email address to continue.';return;}
   var body='Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nService: '+d.get('need')+'\n\n'+d.get('msg');
-  window.location.href='mailto:webhitsdesign@gmail.com?subject='+encodeURIComponent('Project inquiry from '+d.get('name'))+'&body='+encodeURIComponent(body);
+  window.location.href='mailto:contact@webhitsdesign.com?subject='+encodeURIComponent('Project inquiry from '+d.get('name'))+'&body='+encodeURIComponent(body);
   s.textContent='Your email app should open with the request ready to send.';
 });
 </script>
