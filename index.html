@@ -85,11 +85,10 @@ section>.wrap>h2{margin-bottom:14px}
 
 .contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px}
 @media(max-width:800px){.contact{grid-template-columns:1fr}}
-form{background:var(--panel);border:1px solid var(--line);padding:28px;display:grid;gap:16px}
-label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
-input,select,textarea{font:400 1rem var(--body);color:var(--ink);background:var(--paper);border:1.5px solid var(--line);border-radius:6px;padding:11px 12px;width:100%}
-textarea{min-height:120px;resize:vertical}
-.note{font-size:.9rem;color:var(--muted)}
+.hubspot-panel{background:var(--panel);border:1px solid var(--line);padding:28px;min-height:300px}
+#hubspot-contact-form{min-height:170px}
+.form-note{font-size:.9rem;color:var(--muted);margin-top:12px}
+.form-fallback{font-size:.95rem;color:var(--muted)}
 footer{border-top:1px solid var(--line);padding:28px 0 36px;color:var(--muted);font-size:.95rem}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 </style>
@@ -154,30 +153,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
     <h2>Ready to get started?</h2>
     <p style="margin-top:16px;color:var(--muted)">Tell us about your business and website goals. We will follow up to discuss the right next steps. Prefer email? Contact <a href="mailto:contact@webhitsdesign.com">contact@webhitsdesign.com</a>.</p>
   </div>
-  <form id="f" novalidate>
-    <label>Your name<input name="name" required autocomplete="name"></label>
-    <label>Email<input name="email" type="email" required autocomplete="email"></label>
-    <label>What do you need?
-      <select name="need"><option>Website audit</option><option>Redesign strategy</option><option>Design and build</option><option>Ongoing care</option><option>Not sure yet</option></select>
-    </label>
-    <label>About your project<textarea name="msg" placeholder="Your business, your current site (if any), and what you want to change."></textarea></label>
-    <button class="btn" type="submit">Send request</button>
-    <p class="note" id="status" role="status">This opens your email app with the message ready to send.</p>
-  </form>
+  <div class="hubspot-panel">
+    <div id="hubspot-contact-form" aria-label="Website project inquiry form"><p class="form-fallback" id="form-loading" role="status">Loading secure inquiry form…</p></div>
+    <p class="form-note">Your details will be sent to Webhits Designs through HubSpot so we can respond to your request.</p>
+    <noscript><p class="form-fallback">JavaScript is required for the inquiry form. Please email <a href="mailto:contact@webhitsdesign.com">contact@webhitsdesign.com</a>.</p></noscript>
+  </div>
 </div></section>
 </main>
 
 <footer><div class="wrap"><span>&copy; <span id="y">2026</span> Webhits Designs</span><a href="mailto:contact@webhitsdesign.com">contact@webhitsdesign.com</a></div></footer>
 
+<script src="https://js.hsforms.net/forms/embed/v2.js" defer></script>
 <script>
 document.getElementById('y').textContent=new Date().getFullYear();
-document.getElementById('f').addEventListener('submit',function(e){
-  e.preventDefault();
-  var d=new FormData(this),s=document.getElementById('status');
-  if(!d.get('name').trim()||!/\S+@\S+\.\S+/.test(d.get('email'))){s.textContent='Enter your name and a valid email address to continue.';return;}
-  var body='Name: '+d.get('name')+'\nEmail: '+d.get('email')+'\nService: '+d.get('need')+'\n\n'+d.get('msg');
-  window.location.href='mailto:contact@webhitsdesign.com?subject='+encodeURIComponent('Project inquiry from '+d.get('name'))+'&body='+encodeURIComponent(body);
-  s.textContent='Your email app should open with the request ready to send.';
+window.addEventListener('load',function(){
+  var target=document.getElementById('hubspot-contact-form');
+  if(window.hbspt && window.hbspt.forms && typeof window.hbspt.forms.create==='function'){
+    target.textContent='';
+    window.hbspt.forms.create({
+      region:'na2',
+      portalId:'246890167',
+      formId:'b5adb1cc-af04-41e8-8881-494a303d3d9c',
+      target:'#hubspot-contact-form'
+    });
+  }else{
+    target.textContent='The inquiry form is unavailable at the moment. Please email contact@webhitsdesign.com.';
+  }
 });
 </script>
 </body>
